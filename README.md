@@ -1,7 +1,7 @@
 # JUM  
 rf multiskin  
   
-##HOW TO MODIFY THE PLUGIN:  
+#HOW TO MODIFY THE PLUGIN:  
 This plugin was made with BepInEx & Harmony libraries. Requires BepInEx installed for compilation.  
 
 
@@ -16,7 +16,7 @@ Voice scanning/routing/activation: //These are made to interact with the game's 
   VoicePackActivator.cs  
   PlayerVoiceEventBridge.cs  
 
-##Building the plugin
+#Building the plugin
 From Ravenfield root:
     dotnet build "<Yoursourcepath>\ActorSkinSelector.csproj" -c Release
 
