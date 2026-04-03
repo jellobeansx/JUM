@@ -1,22 +1,41 @@
-# JUM  
-rf multiskin  
-  
-## HOW TO MODIFY THE PLUGIN:  
-This plugin was made with BepInEx & Harmony libraries. Requires BepInEx installed for compilation.  
+# JUM
+Ravenfield multiskin plugin.
 
+## How To Modify The Plugin
+This plugin is built with **BepInEx** + **Harmony**.  
+You need BepInEx references available to compile.
 
-Plugin entry and runtime config: ActorSkinSelectorPlugin.cs //Write your own extra modules and link it here  
-UI layout/colors/buttons: SkinSelectorUI.cs //All in-game UI related functionalities. Modifying it is not recommended unless you want to add new features.  
-Skin selection logic/rarity/voice roll: SkinPool.cs //Edit hardcoded chance% per tier here. You can make the plugin read the chance% from Ravenfield\BepInEx\config\ and apply at runtime.  
-Save/load preset format: SkinConfig.cs  
-Spawn/vehicle skin application: SkinHook.cs //Allows for adding custom vehicle types, Assembly patching mod compatibility. A highly requested feature is skins for boats but you can add it yourself.  
-Voice scanning/routing/activation: //These are made to interact with the game's workshop system to grep and redirect voice pack instances. Highly delicate, not recommended to modify unless the current modding API for mutators get deprecated in the future.  
-  VoicePackScanner.cs  
-  VoicePackRouter.cs  
-  VoicePackActivator.cs  
-  PlayerVoiceEventBridge.cs  
+### Core Files
+- `ActorSkinSelectorPlugin.cs`  
+  Plugin entry point and runtime config bindings.  
+  Add any extra module bootstrap calls here.
 
-## Building the plugin
+- `SkinSelectorUI.cs`  
+  In-game UI layout, colors, buttons, and interactions.  
+  Edit only if you want UI/UX changes or new UI features.
+
+- `SkinPool.cs`  
+  Skin selection logic, rarity weights, and voice roll behavior.  
+  This is where hardcoded chance values live.
+
+- `SkinConfig.cs`  
+  Save/load preset structure and JSON serialization logic.
+
+- `SkinHook.cs`  
+  Spawn hooks, vehicle seat hooks, and role-based skin application.  
+  Good place to extend behavior for custom vehicle/mod compatibility.
+
+### Voice System Files
+These files scan workshop mutators, cache sound banks, and route voice playback.  
+They are tightly coupled to current mutator/runtime behavior, so only edit if needed.
+
+- `VoicePackScanner.cs`
+- `VoicePackRouter.cs`
+- `VoicePackActivator.cs`
+- `PlayerVoiceEventBridge.cs`
+
+## Build
 From Ravenfield root:
-    dotnet build "<Yoursourcepath>\ActorSkinSelector.csproj" -c Release
 
+```powershell
+dotnet build "<YourSourcePath>\\ActorSkinSelector.csproj" -c Release
